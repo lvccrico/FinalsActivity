@@ -45,6 +45,23 @@ class OrderController extends Controller
 
         // $customer->user()->save($user);
 
+        $validatedData = $request->validate([
+            'first_name' => 'required|string|max:50',
+            'last_name' => 'required|string|max:50',
+            'email' => 'required|string|email|max:200',
+            'address' => 'required|string|max:200',
+            'city' => 'required|string|max:50',
+            'zip_code' => 'required|string|max:4',
+            'phone_number' => 'required|string|max:11',
+        ]);
+         
+        $contents = Cart::content();
+        foreach ($contents as $content => $value) {
+            $items[$value->id]['product_id'] = $value->id;
+            $items[$value->id]['price'] = $value->price;
+            $items[$value->id]['qty'] = $value->qty;
+        }
+
         $shipping = Shipping::create([
             'user_id' => Auth::user()->id,
             'first_name' => $request->first_name,
@@ -62,10 +79,9 @@ class OrderController extends Controller
         $order->shipping()->associate($shipping);
 
     	$user_order = Auth::user()->orders()->save($order);
+        $user_order->items()->attach($items);
 
-        // Cart::store($user_order->id);
-
-        // Cart::destroy();
+        Cart::destroy();
 
         return view('thankyou');
     }

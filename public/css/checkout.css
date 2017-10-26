@@ -304,6 +304,16 @@ hr{
     }
     
 }
+/* Color of invalid field */
+.has-error .form-control {
+    color: #a94442;
+}
+
+/* Color of invalid field */
+.help-block {
+    color: #a94442;
+}
+
 /*
 @media only screen and (max-width: 777px){
     .container{

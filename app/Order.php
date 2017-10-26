@@ -22,4 +22,8 @@ class Order extends Model
     public function shipping() {
         return $this->belongsTo('App\Shipping');
     }
+
+    public function items() {
+        return $this->belongsToMany('App\Product');
+    }
 }
