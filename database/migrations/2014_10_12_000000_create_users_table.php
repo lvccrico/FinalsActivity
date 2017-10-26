@@ -19,7 +19,11 @@ class CreateUsersTable extends Migration
             $table->string('last_name', 20); 
             $table->string('email')->unique();
             $table->string('password');
+            $table->string('country')->default('Philippines'); 
             $table->string('address', 200);
+            $table->string('city', 50);
+            $table->string('zip_code', 4);
+            $table->string('phone_number', 11);
             $table->rememberToken();
             $table->timestamps();
         });

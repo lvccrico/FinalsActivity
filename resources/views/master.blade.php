@@ -66,7 +66,6 @@
 
               </ul>
               <ul class="nav navbar-nav navbar-right">
-                <li class="{{ set_active('wishlist') }}"><a href="{{ url('/wishlist') }}">Wishlist ({{ Cart::instance('wishlist')->count(false) }})</a></li>
                 <li class="{{ set_active('cart') }}"><a href="{{ url('/cart') }}">Cart ({{ Cart::instance('default')->count(false) }})</a></li>
               </ul>
             </div><!--/.nav-collapse -->
@@ -78,9 +77,11 @@
     @yield('content')
 
     <footer>
-      <div class="container">
-        <p class="text-muted">By <a href="http://andremadarang.com">Andre Madarang</a></p>
-      </div>
+        <div class="container">
+            <hr/>
+            <p class="text-muted">This site is a requirements for our E-Commerce course @ La Verdad Christian College Apalit Pampanga.</p>
+            <p class="text-muted">Created by <a href="https://github.com/lvccrico">Rico Custodio</a> BSIS 3 student</p>
+        </div>
     </footer>
 
 <!-- JavaScript -->

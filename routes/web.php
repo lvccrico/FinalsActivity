@@ -18,4 +18,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('shop', 'ProductController', ['only' => ['index', 'show']]);
+Route::delete('emptyCart', 'CartController@emptyCart');
+Route::get('checkout', 'CartController@checkout');
+
+Route::resource('shop', 'ProductController', ['only' => ['index', 'show', 'update', 'destroy']]);
+Route::resource('cart', 'CartController');
+Route::resource('order', 'OrderController', ['only' => ['index', 'show', 'store', 'destroy']]);
+// Route::post('order', 'OrderController@store');
