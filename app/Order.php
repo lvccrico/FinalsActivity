@@ -23,6 +23,10 @@ class Order extends Model
         return $this->belongsTo('App\Shipping');
     }
 
+    public function payment() {
+        return $this->belongsTo('App\Payment');
+    }
+
     public function items() {
         return $this->belongsToMany('App\Product');
     }
